@@ -142,7 +142,7 @@ const Register = (props) => {
     <StyledAuthPage>
       <StyledContainer>
           <StyledLoginForm>
-          <StyledTitle>Sign Up</StyledTitle>
+          <StyledTitle>Зарегистрироваться</StyledTitle>
             <StyledRegister>
               <StyledLink to="/login">
                 Уже есть аккаунт?
@@ -168,7 +168,7 @@ const Register = (props) => {
                     <StyledLabel htmlFor="email">E-mail</StyledLabel>
                     <StyledInput
                       type="email"
-                      placeholder="Email"
+                      placeholder="Username@nomoreparties.space"
                       value={props.email}
                       id="email"
                       onChange={changeEmail} />
@@ -178,7 +178,7 @@ const Register = (props) => {
                     <StyledLabel htmlFor="password">Пароль</StyledLabel>
                     <StyledInput
                       type="password"
-                      placeholder="Password"
+                      placeholder="*********"
                       value={props.password}
                       id="password"
                       onChange={changePassword} />
