@@ -37,12 +37,12 @@ const StyledTitle = styled.h1`
 
 const StyledRegister = styled.p`
   text-align: center;
-  color: ${props => props.color || '#0000FF'};
+  color: #0000FF;
   text-decoration: underline;
 `;
 
 const StyledLink = styled(Link)`
-  color: ${props => props.color || '#0000FF'};
+  color: #0000FF;
 `;
 
 const StyledInputLine = styled.fieldset`
@@ -54,13 +54,15 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 8px 16px;
   font-size: 16px;
-  border-radius: .3rem;
-  line-height: 1.25;
-  color: #55595c;
-  background-color: #fff;
-  background-image: none;
-  background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 8px;
+  color: #62626A;
+  background-color: #F4F4F6;
+  border: none;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,.08), inset 0 0 1px 0 rgba(0,0,0,.12);
+  
+  &::placeholder {
+    color: #62626A;
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -76,7 +78,7 @@ const StyledButton = styled.button`
   border-radius: 8px;
   color: white;
   padding: 8px 36.5px;
-  background-color: ${props => props.color || '#0000FF'};
+  background-color: #0000FF;
   align-self: end;
   margin-top: 28px;
 `;
