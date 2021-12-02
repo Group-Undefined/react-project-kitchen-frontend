@@ -11,6 +11,76 @@ import {
 
 import styled from 'styled-components';
 
+const StyledFlex = styled.div`
+  display: flex;
+  flex-direction: ${({ direction }) => direction || 'row'};
+  align-items: ${({ align }) => align || 'stretch'};
+  justify-content: ${({ justify }) => justify || 'start'};
+  row-gap: ${({ rowGap }) => rowGap || '0' };
+  column-gap: ${({ colGap }) => colGap || '0'};
+`;
+
+const StyledContainer = styled.div`
+  max-width: 1108px;
+  margin: 0 auto;
+  padding-top: 48px;
+`;
+
+const StyledLoginForm = styled.div`
+  max-width: 540px;
+  margin: 0 auto;
+`;
+
+const StyledTitle = styled.h1`
+  text-align: center;
+`;
+
+const StyledRegister = styled.p`
+  text-align: center;
+  color: ${props => props.color || '#0000FF'};
+  text-decoration: underline;
+`;
+
+const StyledLink = styled(Link)`
+  color: ${props => props.color || '#0000FF'};
+`;
+
+const StyledInputLine = styled.fieldset`
+  margin-bottom: 0;
+`;
+
+const StyledInput = styled.input`
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: .3rem;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+`;
+
+const StyledLabel = styled.label`
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
+  padding-left: 16px;
+`;
+
+const StyledButton = styled.button`
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 36.5px;
+  background-color: ${props => props.color || '#0000FF'};
+  align-self: end;
+  margin-top: 28px;
+`;
+
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,8 +95,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Login = (props) => {
-  console.log('PROPS', props)
-
 
   const changeEmail = ev => props.onChangeEmail(ev.target.value);
   const changePassword = ev => props.onChangePassword(ev.target.value);
@@ -46,52 +114,49 @@ const Login = (props) => {
 
   return (
     <div className="auth-page">
-      <div className="container page">
-        <div className="row">
-
-          <div className="col-md-6 offset-md-3 col-xs-12">
-            <h1 className="text-xs-center">Sign In</h1>
-            <p className="text-xs-center">
-              <Link to="/register">
-                Need an account?
-              </Link>
-            </p>
+      <StyledContainer>
+          <StyledLoginForm>
+            <StyledTitle>Войти</StyledTitle>
+            <StyledRegister>
+              <StyledLink to="/register">
+                Хотите создать аккаунт?
+              </StyledLink>
+            </StyledRegister>
 
             <ListErrors errors={props.errors} />
 
             <form onSubmit={submitForm(email, password)}>
               <fieldset>
+                <StyledFlex direction={'column'} rowGap={'12px'}>
+                  <StyledInputLine>
+                    <StyledLabel htmlFor="email">E-mail</StyledLabel>
+                    <StyledInput
+                      type="email"
+                      placeholder="E-mail"
+                      value={email}
+                      id="email"
+                      onChange={changeEmail}/>
+                  </StyledInputLine>
 
-                <fieldset className="form-group">
-                  <input
-                    className="form-control form-control-lg"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={changeEmail} />
-                </fieldset>
-
-                <fieldset className="form-group">
-                  <input
-                    className="form-control form-control-lg"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={changePassword} />
-                </fieldset>
-                <button
-                  className="btn btn-lg btn-primary pull-xs-right"
-                  type="submit"
-                  disabled={props.inProgress}>
-                  Sign in
-                </button>
-
+                  <StyledInputLine>
+                    <StyledLabel htmlFor="password">Password</StyledLabel>
+                    <StyledInput
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      id="password"
+                      onChange={changePassword} />
+                  </StyledInputLine>
+                  <StyledButton
+                    type="submit"
+                    disabled={props.inProgress}>
+                    Войти
+                  </StyledButton>
+                </StyledFlex>
               </fieldset>
             </form>
-          </div>
-
-        </div>
-      </div>
+          </StyledLoginForm>
+      </StyledContainer>
     </div>
   );
 }
