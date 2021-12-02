@@ -11,6 +11,9 @@ import {
 
 import styled from 'styled-components';
 
+const StyledAuthPage = styled.div`
+`;
+
 const StyledFlex = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction || 'row'};
@@ -127,7 +130,7 @@ const Login = (props) => {
   const password = props.password;
 
   return (
-    <div className="auth-page">
+    <StyledAuthPage>
       <StyledContainer>
           <StyledLoginForm>
             <StyledTitle>Войти</StyledTitle>
@@ -171,7 +174,7 @@ const Login = (props) => {
             </form>
           </StyledLoginForm>
       </StyledContainer>
-    </div>
+    </StyledAuthPage>
   );
 }
 
