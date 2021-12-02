@@ -152,7 +152,7 @@ const Login = (props) => {
                       onChange={changeEmail}/>
                   </StyledInputLine>
 
-                  <StyledInputLine after={'../images/eye.svg'}>
+                  <StyledInputLine after={'../images/red.png'}>
                     <StyledLabel htmlFor="password">Password</StyledLabel>
                     <StyledInput
                       type="password"
