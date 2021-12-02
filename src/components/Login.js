@@ -47,6 +47,19 @@ const StyledLink = styled(Link)`
 
 const StyledInputLine = styled.fieldset`
   margin-bottom: 0;
+  position: relative;
+
+  ${({ after }) => after && 
+  `&::after{
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: center no-repeat url(${after});
+    position: absolute;
+    right: 17px;
+    bottom: 8px;
+  }`}
 `;
 
 const StyledInput = styled.input`
@@ -59,7 +72,7 @@ const StyledInput = styled.input`
   background-color: #F4F4F6;
   border: none;
   box-shadow: inset 0 1px 2px 0 rgba(0,0,0,.08), inset 0 0 1px 0 rgba(0,0,0,.12);
-  
+
   &::placeholder {
     color: #62626A;
   }
@@ -97,7 +110,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Login = (props) => {
-
   const changeEmail = ev => props.onChangeEmail(ev.target.value);
   const changePassword = ev => props.onChangePassword(ev.target.value);
   const submitForm = (email, password) => ev => {
@@ -140,7 +152,7 @@ const Login = (props) => {
                       onChange={changeEmail}/>
                   </StyledInputLine>
 
-                  <StyledInputLine>
+                  <StyledInputLine after={'../images/eye.svg'}>
                     <StyledLabel htmlFor="password">Password</StyledLabel>
                     <StyledInput
                       type="password"
