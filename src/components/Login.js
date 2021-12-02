@@ -36,12 +36,14 @@ const StyledLoginForm = styled.div`
 
 const StyledTitle = styled.h1`
   text-align: center;
+  margin-bottom: 40px;
 `;
 
 const StyledRegister = styled.p`
   text-align: center;
   color: #0000FF;
   text-decoration: underline;
+  margin-bottom: 16px;
 `;
 
 const StyledLink = styled(Link)`
