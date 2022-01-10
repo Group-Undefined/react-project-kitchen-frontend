@@ -1,6 +1,8 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import Banner from './Banner';
 import MainView from './MainView';
-import React from 'react';
 import Tags from './Tags';
 import agent from '../../agent';
 import { connect } from 'react-redux';
@@ -27,40 +29,54 @@ const mapDispatchToProps = dispatch => ({
     dispatch({  type: HOME_PAGE_UNLOADED })
 });
 
-class Home extends React.Component {
-  componentWillMount() {
-    const tab = this.props.token ? 'feed' : 'all';
-    const articlesPromise = this.props.token ?
+function Home(props) {
+  useEffect(() => {
+    const tab = props.token ? 'feed' : 'all';
+    const articlesPromise = props.token ?
       agent.Articles.feed :
       agent.Articles.all;
 
-    this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
-  }
+    props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
 
-  componentWillUnmount() {
-    this.props.onUnload();
-  }
-
-  render() {
-    return (
-      <div className="home-page">
-        <Banner token={this.props.token} appName={this.props.appName} />
-        <div className="container page">
-          <div className="row">
-            <MainView />
-            <div className="col-md-3">
-              <div className="sidebar">
-                <p>Popular Tags</p>
-                <Tags
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
-              </div>
+    return ( () => {
+      props.onUnload();
+    });
+  }, []);
+  
+  return (
+    <div className="home-page">
+      <Banner token={props.token} appName={props.appName} />
+      <div className="container page">
+        <div className="row">
+          <MainView location={props.location} />
+          <div className="col-md-3">
+            <div className="sidebar">
+              <p>Popular Tags</p>
+              <Tags
+                tags={props.tags}
+                onClickTag={props.onClickTag} />
             </div>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+
 }
+
+Home.propTypes = {
+  onLoad: PropTypes.func.isRequired,
+  onUnload: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  appName: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  tags: PropTypes.array,
+  onClickTag: PropTypes.func.isRequired
+};
+
+Home.defaultProps = {
+  token: null,
+  tags: undefined
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
