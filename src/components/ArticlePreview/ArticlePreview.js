@@ -24,14 +24,14 @@ const mapDispatchToProps = dispatch => ({
   })
 });
 
-const ArticlePreview = props => {
-  const article = props.article;
+const ArticlePreview = ({ article, unfavorite, favorite }) => {
+  //const article = props.article;
 
   return (
     <ArticleWrapper>
       <div className="strange-block" />
       <div className="article-preview">
-        <ArticleMeta article={article} unfavorite={props.unfavorite} favorite={props.favorite} />
+        <ArticleMeta article={article} unfavorite={unfavorite} favorite={favorite} />
         <PreviewLink article={article} />
       </div>
     </ArticleWrapper>

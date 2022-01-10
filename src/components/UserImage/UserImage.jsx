@@ -6,10 +6,12 @@ import defaultAvatarPath from '../../images/default-avatar.svg';
 const defaultAvatarURL = 'https://static.productionready.io/images/smiley-cyrus.jpg';
 
 export default function UserImage({src, location}) {
+  let isDefault = false;
   if ( src === defaultAvatarURL ) {
     src = defaultAvatarPath;
+    isDefault = true;
   }
-  const isDefault = (src === defaultAvatarPath);
+  
   return (
     <UserImageWrapper src={src} location={location} isDefault={isDefault} />
   );

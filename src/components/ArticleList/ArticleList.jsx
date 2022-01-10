@@ -6,8 +6,8 @@ import React from 'react';
 
 import { ListWrapper } from './Styles';
 
-const ArticleList = props => {
-  if (!props.articles) {
+const ArticleList = ({ articles, articlesCount, currentPage, pager }) => {
+  if (!articles) {
     return (
       <ListWrapper >
         Загрузка...
@@ -15,7 +15,7 @@ const ArticleList = props => {
     );
   }
 
-  if (props.articles.length === 0) {
+  if (!articles.length) {
     return (
       <ListWrapper >
         <div className="empty-wrapper">
@@ -28,7 +28,7 @@ const ArticleList = props => {
   return (
     <ListWrapper>
       {
-        props.articles.map(article => {
+        articles.map(article => {
           return (
             <ArticlePreview article={article} key={article.slug} />
           );
@@ -36,9 +36,9 @@ const ArticleList = props => {
       }
 
       <ListPagination
-        pager={props.pager}
-        articlesCount={props.articlesCount}
-        currentPage={props.currentPage} 
+        pager={pager}
+        articlesCount={articlesCount}
+        currentPage={currentPage} 
       />
 
     </ListWrapper>

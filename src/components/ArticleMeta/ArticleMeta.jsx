@@ -24,7 +24,7 @@ export default function ArticleMeta({ article, unfavorite, favorite }) {
   };
 
   return (
-    <MetaWrapper className="meta-wrapper">
+    <MetaWrapper>
       <div className="avatar-info-wrapper">
         <Link to={`/@${article.author.username}`}>
           <UserImage src={article.author.image} alt={article.author.username} location="article" />
@@ -33,7 +33,7 @@ export default function ArticleMeta({ article, unfavorite, favorite }) {
       </div>
       
       <FavoriteButton favorited={article.favorited} onClick={handleClick}>
-        {article.favoritesCount > 0 && article.favoritesCount} 
+        {article.favoritesCount && article.favoritesCount} 
         <LikeIcon favorited={article.favorited} />
       </FavoriteButton>
     </MetaWrapper>

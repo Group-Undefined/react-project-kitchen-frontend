@@ -129,7 +129,7 @@ NavTabs.propTypes = {
   tag: PropTypes.string,
   onTabClick: PropTypes.func,
   isFavorites: PropTypes.bool,
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object,
 
 };
 
@@ -144,12 +144,12 @@ NavTabs.defaultProps = {
 YourFeedTab.propTypes = {
   token: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
-  tab: PropTypes.string.isRequired,
+  tab: PropTypes.string,
 };
 
 GlobalFeedTab.propTypes = {
   onTabClick: PropTypes.func.isRequired,
-  tab: PropTypes.string.isRequired,
+  tab: PropTypes.string,
 };
 
 TagFilterTab.propTypes = {
