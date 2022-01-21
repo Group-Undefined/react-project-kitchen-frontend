@@ -22,7 +22,8 @@ const mapStateToProps = state => {
     appName: state.common.appName,
     currentUser: state.common.currentUser,
     redirectTo: state.common.redirectTo
-  }};
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
@@ -32,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class App extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
       // this.context.router.replace(nextProps.redirectTo);
       store.dispatch(push(nextProps.redirectTo));
@@ -40,7 +41,7 @@ class App extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const token = window.localStorage.getItem('jwt');
     if (token) {
       agent.setToken(token);

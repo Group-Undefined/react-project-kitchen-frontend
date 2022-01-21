@@ -70,7 +70,7 @@ class Editor extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.match.params.slug !== nextProps.match.params.slug) {
       if (nextProps.match.params.slug) {
         this.props.onUnload();
@@ -80,7 +80,7 @@ class Editor extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.match.params.slug) {
       return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
     }
@@ -146,7 +146,7 @@ class Editor extends React.Component {
                           return (
                             <span className="tag-default tag-pill" key={tag}>
                               <i  className="ion-close-round"
-                                  onClick={this.removeTagHandler(tag)}>
+                                onClick={this.removeTagHandler(tag)}>
                               </i>
                               {tag}
                             </span>

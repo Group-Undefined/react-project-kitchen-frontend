@@ -3,7 +3,7 @@ import CommentContainer from './CommentContainer';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
-import marked from 'marked';
+import {marked} from 'marked';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../../constants/actionTypes';
 
 const mapStateToProps = state => ({
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Article extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.onLoad(Promise.all([
       agent.Articles.get(this.props.match.params.id),
       agent.Comments.forArticle(this.props.match.params.id)

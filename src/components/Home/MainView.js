@@ -9,13 +9,13 @@ const YourFeedTab = props => {
     const clickHandler = ev => {
       ev.preventDefault();
       props.onTabClick('feed', agent.Articles.feed, agent.Articles.feed());
-    }
+    };
 
     return (
       <li className="nav-item">
         <a  href=""
-            className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
-            onClick={clickHandler}>
+          className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
+          onClick={clickHandler}>
           Your Feed
         </a>
       </li>

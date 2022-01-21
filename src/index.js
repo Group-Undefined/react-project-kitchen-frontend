@@ -4,7 +4,7 @@ import React from 'react';
 import { store, history} from './store';
 
 import { Route, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import LucidaSansUnicodeWoff from './fonts/lucida-sans-unicode.woff';
 import LucidaSansUnicodeWoff2 from './fonts/lucida-sans-unicode.woff2';

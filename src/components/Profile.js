@@ -38,9 +38,9 @@ const FollowUserButton = props => {
   const handleClick = ev => {
     ev.preventDefault();
     if (props.user.following) {
-      props.unfollow(props.user.username)
+      props.unfollow(props.user.username);
     } else {
-      props.follow(props.user.username)
+      props.follow(props.user.username);
     }
   };
 
@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Profile extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
       agent.Articles.byAuthor(this.props.match.params.username)
@@ -135,7 +135,7 @@ class Profile extends React.Component {
                   user={profile}
                   follow={this.props.onFollow}
                   unfollow={this.props.onUnfollow}
-                  />
+                />
 
               </div>
             </div>

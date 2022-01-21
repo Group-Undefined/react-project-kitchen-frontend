@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
   APP_LOAD,
   REDIRECT,
@@ -37,6 +38,7 @@ export default (state = defaultState, action) => {
     case LOGOUT:
       return { ...state, redirectTo: '/', token: null, currentUser: null };
     case ARTICLE_SUBMITTED:
+      // eslint-disable-next-line no-case-declarations
       const redirectUrl = `/article/${action.payload.article.slug}`;
       return { ...state, redirectTo: redirectUrl };
     case SETTINGS_SAVED:

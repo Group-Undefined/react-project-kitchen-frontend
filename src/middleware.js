@@ -14,11 +14,13 @@ const promiseMiddleware = store => next => action => {
     const currentView = store.getState().viewChangeCounter;
     const skipTracking = action.skipTracking;
 
+    // eslint-disable-next-line promise/catch-or-return
     action.payload.then(
       res => {
-        const currentState = store.getState()
+        const currentState = store.getState();
+        // eslint-disable-next-line promise/always-return
         if (!skipTracking && currentState.viewChangeCounter !== currentView) {
-          return
+          return;
         }
         console.log('RESULT', res);
         action.payload = res;
@@ -26,9 +28,9 @@ const promiseMiddleware = store => next => action => {
         store.dispatch(action);
       },
       error => {
-        const currentState = store.getState()
+        const currentState = store.getState();
         if (!skipTracking && currentState.viewChangeCounter !== currentView) {
-          return
+          return;
         }
         console.log('ERROR', error);
         action.error = true;
@@ -65,4 +67,4 @@ function isPromise(v) {
 }
 
 
-export { promiseMiddleware, localStorageMiddleware }
+export { promiseMiddleware, localStorageMiddleware };

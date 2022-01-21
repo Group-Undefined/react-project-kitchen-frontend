@@ -67,13 +67,13 @@ const ArticlePreview = props => {
                 <li className="tag-default tag-pill tag-outline" key={tag}>
                   {tag}
                 </li>
-              )
+              );
             })
           }
         </ul>
       </Link>
     </div>
   );
-}
+};
 
 export default connect(() => ({}), mapDispatchToProps)(ArticlePreview);
